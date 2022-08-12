@@ -1,0 +1,165 @@
+.hexagon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 100px auto;
+    height: 190px;
+}
+
+$top-color:seagreen;
+$bottom-color:tomato;
+$left-top-color: #900000;
+$left-bottom-color:teal;
+$right-top-color:mediumblue;
+$right-bottom-color:purple;
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: relative;
+    height: inherit;
+
+    background-color: rgb(10, 10, 10);
+}
+
+.box-content {
+    font-size: 24px;
+    text-align: center;
+    color: #888888;
+}
+
+.left-box {
+    position: absolute;
+    transform: rotateZ(60deg);
+}
+
+.right-box {
+    position: absolute;
+    transform: rotateZ(-60deg);
+}
+
+.box-line {
+    width: 108px;
+    height: 4px;
+}
+
+.top-line {
+    background-color: $top-color;
+    animation: breathe-top 1s ease-in-out 0s infinite alternate;
+    //box-shadow: 0px -4px 10px 0px $top-color;
+}
+
+.bottom-line {
+    background-color: $bottom-color;
+    animation: breathe-bottom 1s ease-in-out 0s infinite alternate;
+    //box-shadow: 0px 4px 10px 0px $bottom-color;
+}
+
+.left-top-line {
+    background-color: $left-top-color;
+    animation: breathe-left-top 1s ease-in-out 0s infinite alternate;
+    //box-shadow: 0px -4px 10px 0px $left-top-color;
+}
+
+.right-bottom-line {
+    background-color: $right-bottom-color;
+    animation: breathe-right-bottom 1s ease-in-out 0s infinite alternate;
+    //box-shadow: 0px 4px 10px 0px $right-bottom-color;
+}
+
+.right-top-line {
+    background-color: $right-top-color;
+    animation: breathe-right-top 1s ease-in-out 0s infinite alternate;
+    //box-shadow: 0px -4px 10px 0px $right-top-color;
+}
+
+.left-bottom-line {
+    background-color: $left-bottom-color;
+    animation: breathe-left-bottom 1s ease-in-out 0s infinite alternate;
+    //box-shadow: 0px 4px 10px 0px $left-bottom-color;
+}
+
+@keyframes breathe {
+    0% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes breathe-top {
+    0% {
+        opacity: 0.4;
+        box-shadow: 0px -4px 10px 0px rgba($top-color, 0.6)
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0px -4px 10px 0px rgba($top-color, 1)
+    }
+}
+
+@keyframes breathe-bottom {
+    0% {
+        opacity: 0.4;
+        box-shadow: 0px 4px 10px 0px rgba($bottom-color, 0.6)
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0px 4px 10px 0px rgba($bottom-color, 1)
+    }
+}
+
+@keyframes breathe-left-top {
+    0% {
+        opacity: 0.4;
+        box-shadow: 0px -4px 10px 0px rgba($left-top-color, 0.6)
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0px -4px 10px 0px rgba($left-top-color, 1)
+    }
+}
+
+@keyframes breathe-right-bottom {
+    0% {
+        opacity: 0.4;
+        box-shadow: 0px 4px 10px 0px rgba($right-bottom-color, 0.6)
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0px 4px 10px 0px rgba($right-bottom-color, 1)
+    }
+}
+
+@keyframes breathe-right-top {
+    0% {
+        opacity: 0.4;
+        box-shadow: 0px -4px 10px 0px rgba($right-top-color, 0.6)
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0px -4px 10px 0px rgba($right-top-color, 1)
+    }
+}
+
+@keyframes breathe-left-bottom {
+    0% {
+        opacity: 0.4;
+        box-shadow: 0px 4px 10px 0px rgba($left-bottom-color, 0.6)
+    }
+
+    100% {
+        opacity: 1;
+        box-shadow: 0px 4px 10px 0px rgba($left-bottom-color, 1)
+    }
+}
