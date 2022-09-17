@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>灵动岛</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #iphone14pro {
+        position: relative;
+        margin: auto;
+        width: 974px;
+        height: 876px;
+        overflow: hidden;
+        background-image: url(https://www.apple.com.cn/v/iphone-14-pro/a/images/overview/dynamic-island/dynamic_hw__btl4fomgspyu_large.png);
+      }
+      .dynamic-island {
+        width: 320px;
+        margin-top: 72px;
+        margin: 72px auto 0;
+        background-color: red;
+        height: 80px;
+        border-radius: 40px;
+        background-color: #272729;
+        position: relative;
+      }
+      .dynamic-island::after {
+        position: absolute;
+        content: " ";
+        right: 0;
+        width: 80px;
+        height: 100%;
+        border-radius: 80px;
+        background-color: #272729;
+      }
+      /* 变长 */
+      .longer {
+        animation: longer 800ms ease-in-out forwards;
+      }
+      @keyframes longer {
+        0% {
+        }
+        60% {
+          width: 50vw;
+        }
+        80% {
+          transform: scaleX(1.04);
+        }
+        100% {
+          transform: scaleX(1);
+          width: 50vw;
+        }
+      }
+      /* 分离 */
+      .divide {
+        animation: divide-left 800ms ease-in-out forwards;
+      }
+      @keyframes divide-left {
+        0% {
+        }
+        40% {
+          transform: scaleX(1.1);
+        }
+
+        100% {
+          transform: scaleX(1);
+        }
+      }
+      .divide::after {
+        animation: divide-right 800ms ease-in-out forwards;
+      }
+      @keyframes divide-right {
+        0% {
+        }
+        40% {
+          transform: scaleX(1.1);
+        }
+
+        100% {
+          transform: scaleX(1);
+          right: -100px;
+        }
+      }
+      /* 融合 */
+      .fusion {
+        animation: fusion-left 800ms ease-in-out forwards;
+      }
+      @keyframes fusion-left {
+        0% {
+        }
+        40% {
+          transform: scaleX(1.1);
+        }
+
+        100% {
+          transform: scaleX(1);
+        }
+      }
+      .fusion::after {
+        animation: fusion-right 800ms ease-in-out forwards;
+      }
+      @keyframes fusion-right {
+        0% {
+          right: -100px;
+        }
+        40% {
+          transform: scaleX(1.1);
+        }
+
+        100% {
+          transform: scaleX(1);
+          right: 0;
+        }
+      }
+      /* 变大 */
+      .bigger {
+        animation: bigger 800ms ease-in-out forwards;
+      }
+      @keyframes bigger {
+        0% {
+        }
+        60% {
+          width: 81vw;
+          height: 400px;
+          border-radius: 100px;
+        }
+        80% {
+          transform: scaleX(1.04);
+        }
+        100% {
+          width: 81vw;
+          height: 400px;
+          border-radius: 100px;
+          transform: scaleX(1);
+        }
+      }
+      .bigger::after {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="iphone14pro">
+      <div class="dynamic-island"></div>
+    </div>
+    <script>
+      // 灵动岛对应dom
+      const box = document.querySelector(".dynamic-island");
+
+      const animationList = ["longer", "divide", "fusion", "bigger"];
+      box.addEventListener("click", () => {
+        box.classList.add(animationList[index]);
+      });
+      let index = 0;
+      // 每一个动画结束都会触发此事件（包括子元素及不同种类属性动画）
+      box.addEventListener("animationend", (e) => {
+        if (
+          e.animationName === "divide-right" ||
+          e.animationName === "fusion-right"
+        ) {
+          return;
+        }
+        index++;
+        setTimeout(() => {
+          if (index <= animationList.length - 1) {
+            box.classList.add(animationList[index]);
+          } else {
+            index = 0;
+          }
+        }, 800);
+      });
+    </script>
+  </body>
+</html>
+
+
